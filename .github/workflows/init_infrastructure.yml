@@ -2,7 +2,7 @@ name: Deploy infrastructure with Terraform
 on: workflow_dispatch
 jobs:
   Deploy infrastructure:
-  name: Deploy infrastructure
+  name: "Deploy infrastructure"
   runs-on: ubuntu-latest
   steps:
 
