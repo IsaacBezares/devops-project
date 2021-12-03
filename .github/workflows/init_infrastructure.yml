@@ -2,6 +2,38 @@ name: Deploy infrastructure with Terraform
 on: workflow_dispatch
 jobs:
   Deploy infrastructure:
+  name: Deploy infrastructure
   runs-on: ubuntu-latest
-  step:
+  steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_wrapper: false
     
+    - name: Terraform Format
+      id: fmt
+      run: terraform fmt -check
+    
+    - name: Terraform Init
+      id: init
+      run: terraform init
+    
+    - name: Terraform Validate
+      id: validate
+      run: terraform validate -no-color
+    
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan -no-color
+    
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+
+    - name: Call terraform output
+      run: |
+        output=$(terraform output test)
+        echo $output
