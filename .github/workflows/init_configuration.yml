@@ -2,13 +2,12 @@ name: Configure Vault server
 on: workflow_dispatch
 jobs:
   Configure Vault Server:
-  name: "Configure Vault Server"
-  runs-on: ubuntu-latest
-  steps:
-    - name: Play Ansible Playbook
-      uses: arillso/action.playbook@master
-      with:
-        playbook: Ansible/playbook.yml
-        inventory: Ansible/.hosts
-        private_key: ${{secrets.SSH_PRIVATE_KEY}}
-        user: azureuser
+    runs-on: ubuntu-latest
+    steps:
+      - name: Play Ansible Playbook
+        uses: arillso/action.playbook@master
+        with:
+          playbook: Ansible/playbook.yml
+          inventory: Ansible/.hosts
+          private_key: ${{secrets.SSH_PRIVATE_KEY}}
+          user: azureuser
