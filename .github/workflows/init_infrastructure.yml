@@ -20,6 +20,9 @@ jobs:
         with:
           terraform_wrapper: false
       
+      - name: Cd to Terraform directory
+        run: cd Terraform
+      
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
