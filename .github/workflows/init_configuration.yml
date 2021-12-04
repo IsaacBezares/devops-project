@@ -4,7 +4,11 @@ jobs:
   configure_vault_server:
     name: Configure Vault Server
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Terraform
     steps:
+    
       - name: Play Ansible Playbook
         uses: arillso/action.playbook@master
         with:
