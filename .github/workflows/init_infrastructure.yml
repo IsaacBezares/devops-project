@@ -1,8 +1,8 @@
 name: Deploy infrastructure with Terraform
 on: workflow_dispatch
 jobs:
-  Deploy infrastructure:
-    name: 'Deploy infrastructure'
+  deploy_infrastructure:
+    name: Deploy infrastructure
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
