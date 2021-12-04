@@ -1,7 +1,8 @@
 name: Configure Vault server
 on: workflow_dispatch
 jobs:
-  Configure Vault Server:
+  configure_vault_server:
+    name: 'Configure Vault Server'
     runs-on: ubuntu-latest
     steps:
       - name: Play Ansible Playbook
