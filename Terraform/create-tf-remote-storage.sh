@@ -1,12 +1,12 @@
 #!/bin/bash
 RESOURCE_GROUP_NAME=rg-terraform
-STORAGE_ACCOUNT_NAME=hipsterisaac
+STORAGE_ACCOUNT_NAME=devopsprojectisaac
 CONTAINER_NAME=tfstate
 
 # Create resource group
 # az group create --name $RESOURCE_GROUP_NAME --location eastus
 
-Create storage account
+# Create storage account
 az storage account create --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME --sku Standard_LRS --encryption-services blob
 
 # Get storage key
