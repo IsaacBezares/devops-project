@@ -46,8 +46,3 @@ jobs:
       
       - name: Terraform Apply
         run: terraform apply -auto-approve
-  
-      - name: Call terraform output
-        run: |
-          output=$(terraform output test)
-          echo $output
