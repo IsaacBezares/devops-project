@@ -6,12 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: cd to Ansible directory
-        run: cd Ansible/
+      - name: pwd
+        run: pwd
 
-      - name: ls
-        run: ls
-        
       - name: Play Ansible Playbook
         uses: arillso/action.playbook@master
         with:
