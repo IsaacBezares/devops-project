@@ -17,4 +17,4 @@ SUBCRIPTION_ID=8c0e6db4-4c40-41df-8c25-44f856ed6301
 # az storage container create --name tfstate --account-name $STORAGE_ACCOUNT_NAME --account-key $ACCOUNT_KEY
 
 # Create service principal
-az ad sp create-for-rbac -n "SP Contributor Global" --role Contributor --scopes /subscriptions/$SUBCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME --sdk-auth
+az ad sp create-for-rbac -n "SP Contributor Global" --role Contributor --scopes /subscriptions/$SUBCRIPTION_ID --sdk-auth
