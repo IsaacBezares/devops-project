@@ -25,7 +25,7 @@ resource "azurerm_public_ip" "ip_vault" {
     resource_group_name     = var.rg_name
     allocation_method       = "Dynamic"
     ip_version              = "IPv4"
-    domain_name_label       = "vault-team-five"
+    domain_name_label       = "devops-project-isaac"
 
     tags = {
         environment = var.environment
@@ -72,22 +72,6 @@ resource "azurerm_network_security_rule" "nsr_vault" {
   resource_group_name         = var.rg_name
   network_security_group_name = azurerm_network_security_group.nsg.name
 }
-
-# Crate inbound rule for test
-resource "azurerm_network_security_rule" "nsr_test" {
-  name                        = "Test"
-  priority                    = 1021
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
-  source_port_range           = "*"
-  destination_port_range      = "7357"
-  source_address_prefix       = "*"
-  destination_address_prefix  = "*"
-  resource_group_name         = var.rg_name
-  network_security_group_name = azurerm_network_security_group.nsg.name
-}
-
 
 # Create network interface
 resource "azurerm_network_interface" "nic_vault" {
