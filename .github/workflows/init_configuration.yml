@@ -5,26 +5,12 @@ jobs:
     name: Configure Vault Server
     runs-on: ubuntu-latest
     steps:
-
-      - name: cd
-        run: cd ..
-
-      - name: pwd
-        run: pwd
-      
-      - name: ls
-        run: ls
-      
-      - name: tree
-        run: tree
-
-      - name: Play Ansible Playbook
-        uses: arillso/action.playbook@master
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
         with:
-          playbook: Ansible/playbook.yml
-          inventory: Ansible/.hosts
-          private_key: ${{secrets.SSH_PRIVATE_KEY}}
-          user: azureuser
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: 'false'
-          ANSIBLE_DEPRECATION_WARNINGS: 'false'
+          playbook: playbook.yml
+          directory: Ansible/
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          options: |
+            --inventory .hosts
+            --verbose
