@@ -4,15 +4,12 @@ jobs:
   configure_vault_server:
     name: Configure Vault Server
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./Ansible
     steps:
     
       - name: Play Ansible Playbook
         uses: arillso/action.playbook@master
         with:
-          playbook: ./playbook.yml
-          inventory: ./.hosts
+          playbook: Ansible/playbook.yml
+          inventory: Ansible/.hosts
           private_key: ${{secrets.SSH_PRIVATE_KEY}}
           user: azureuser
