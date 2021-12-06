@@ -5,6 +5,10 @@ jobs:
     name: Configure Vault Server
     runs-on: ubuntu-latest
     steps:
+    
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
