@@ -1,0 +1,31 @@
+name: Install Helm charts
+on: workflow_dispatch
+jobs:
+  install_application_chart:
+    name: Install Application chart
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+            version: latest
+    
+      - name: Get AKS Credentials
+        uses: Azure/aks-set-context@v1
+        with:
+          creds: ${{ secrets.AZURE_AD_SP_CREDS }}
+          resource-group: rg-devopsproject-dev-eastus
+          cluster-name: aks-devopsproject-dev-eastus
+    
+      - name: Run Helm Deploy
+        run: |
+          helm upgrade \
+            --install \
+            --atomic \
+            --wait \
+            devops-project \
+            ./Helm/devops-project
