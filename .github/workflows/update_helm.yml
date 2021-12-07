@@ -2,8 +2,8 @@ name: Deploy Chart
 on:
   pull_request:
     branches: [ main ]
-    paths: ["Helm/devops-project/*" ]
     types: [ closed ]
+    paths: ["Helm/devops-project/*" ]
 
 jobs:
   install_application_chart:
@@ -18,7 +18,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
-            version: latest
+          version: latest
     
       - name: Get AKS Credentials
         uses: Azure/aks-set-context@v1
