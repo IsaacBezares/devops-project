@@ -1,0 +1,37 @@
+name: Deploy Chart
+on:
+  pull_request:
+    branches: [ main ]
+    paths: ["Helm/devops-project/*" ]
+    types: [ closed ]
+
+jobs:
+  install_application_chart:
+    name: Install Application chart
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+            version: latest
+    
+      - name: Get AKS Credentials
+        uses: Azure/aks-set-context@v1
+        with:
+          creds: ${{ secrets.AZURE_AD_SP_CREDS }}
+          resource-group: rg-devopsproject-dev-eastus
+          cluster-name: aks-devopsproject-dev-eastus
+    
+      - name: Run Helm Deploy
+        run: |
+          helm upgrade \
+            --install \
+            --atomic \
+            --wait \
+            devops-project \
+            ./Helm/devops-project
